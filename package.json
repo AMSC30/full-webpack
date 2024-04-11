@@ -1,33 +1,33 @@
 {
-    "name": "full-webpack",
-    "version": "1.0.0",
-    "main": "index.js",
-    "private": true,
-    "repository": "git@github.com:AMSC30/full-webpack.git",
-    "author": "“zhengxixuan” <930042468@qq.com>",
-    "scripts": {
-        "build": "node --inspect-brk ./src/webpack/bin/webpack.js --config ./build/webpack.dev.js",
-        "serve": "webpack serve --config ./build/webpack.dev.js",
-        "build:prod": "webpack --config ./build/webpack.prod.js",
-        "build:dev": "webpack --config ./build/webpack.dev.js",
-        "serve:dev": "webpack serve --config ./build/webpack.dev.js",
-        "serve:prod": "webpack serve --config ./build/webpack.prod.js",
-        "lib": "webpack --config ./src/library/config.js",
-        "shaking": "webpack --config ./src/shaking/config.js",
-        "loader": "webpack --config ./src/loader/config.js"
-    },
-    "license": "MIT",
-    "devDependencies": {
-        "css-loader": "^6.7.1",
-        "csv-loader": "^3.0.3",
-        "html-webpack-plugin": "^5.5.0",
-        "less-loader": "^11.0.0",
-        "style-loader": "^3.3.1",
-        "webpack": "^5.73.0",
-        "webpack-cli": "^4.10.0",
-        "webpack-dev-server": "^4.9.3"
-    },
-    "dependencies": {
-        "lodash": "^4.17.21"
-    }
+  "name": "full-webpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "repository": "git@github.com:AMSC30/full-webpack.git",
+  "author": "“zhengxixuan” <930042468@qq.com>",
+  "scripts": {
+    "serve": "webpack serve --config ./build/webpack.dev.js",
+    "build:prod": "webpack --config ./build/webpack.prod.js",
+    "build:dev": "webpack --config ./build/webpack.dev.js",
+    "serve:dev": "webpack serve --config ./build/webpack.dev.js",
+    "serve:prod": "webpack serve --config ./build/webpack.prod.js",
+    "lib": "webpack --config ./src/library/config.js",
+    "shaking": "webpack --config ./src/shaking/config.js",
+    "loader": "webpack --config ./src/loader/config.js",
+    "build":"node start.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "csv-loader": "^3.0.3",
+    "html-webpack-plugin": "^5.5.0",
+    "less-loader": "^11.0.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
