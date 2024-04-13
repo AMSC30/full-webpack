@@ -260,7 +260,6 @@ class NormalModuleFactory extends ModuleFactory {
 				stage: 100
 			},
 			(data, callback) => {
-				debugger
 				const {
 					contextInfo,
 					context,

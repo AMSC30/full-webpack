@@ -14,13 +14,13 @@
     "lib": "webpack --config ./src/library/config.js",
     "shaking": "webpack --config ./src/shaking/config.js",
     "loader": "webpack --config ./src/loader/config.js",
-    "build":"node start.js"
+    "build": "node start.js"
   },
   "license": "MIT",
   "devDependencies": {
     "css-loader": "^6.7.1",
     "csv-loader": "^3.0.3",
-    "html-webpack-plugin": "^5.5.0",
+    "html-webpack-plugin": "^5.6.0",
     "less-loader": "^11.0.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.73.0",

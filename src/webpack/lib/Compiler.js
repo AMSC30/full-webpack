@@ -437,7 +437,7 @@ class Compiler {
      * @param {Callback<void>} callback signals when the assets are emitted
      * @returns {void}
      */
-    emitAssets(compilation, callback) {
+     emitAssets(compilation, callback) {
         let outputPath
 
         const emitFiles = err => {
@@ -953,7 +953,7 @@ ${other}`)
             const logger = compilation.getLogger('webpack.Compiler')
 
             logger.time('make hook')
-            
+
             // make上钩子回调会执行compilation上的addEntry方法
             this.hooks.make.callAsync(compilation, err => {
                 logger.timeEnd('make hook')

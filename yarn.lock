@@ -546,9 +546,9 @@
     "tslib" "^2.0.3"
 
 "caniuse-lite@^1.0.30001359":
-  "integrity" "sha512-HpQhpzTGGPVMnCjIomjt+jvyUu8vNFo3TaDiZ/RcoTrlOq/5+tC8zHdsbgFB6MxmaY+jCpsH09aD80Bb4Ow3Sg=="
-  "resolved" "https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001363.tgz"
-  "version" "1.0.30001363"
+  "integrity" "sha512-JFPQs34lHKx1B5t1EpQpWH4c+29zIyn/haGsbpfq3suuV9v56enjFt23zqijxGTMwy1p/4H2tjnQMY+p1WoAyA=="
+  "resolved" "https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001609.tgz"
+  "version" "1.0.30001609"
 
 "chokidar@^3.5.3":
   "integrity" "sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw=="
@@ -1167,10 +1167,10 @@
     "relateurl" "^0.2.7"
     "terser" "^5.10.0"
 
-"html-webpack-plugin@^5.5.0":
-  "integrity" "sha512-sy88PC2cRTVxvETRgUHFrL4No3UxvcH8G1NepGhqaTT+GXN2kTamqasot0inS5hXeg1cMbFDt27zzo9p35lZVw=="
-  "resolved" "https://registry.npmmirror.com/html-webpack-plugin/-/html-webpack-plugin-5.5.0.tgz"
-  "version" "5.5.0"
+"html-webpack-plugin@^5.6.0":
+  "integrity" "sha512-iwaY4wzbe48AfKLZ/Cc8k0L+FKG6oSNRaZ8x5A/T/IVDGyXcbHncM9TdDa93wn0FsSm82FhTKW7f3vS61thXAw=="
+  "resolved" "https://registry.npmmirror.com/html-webpack-plugin/-/html-webpack-plugin-5.6.0.tgz"
+  "version" "5.6.0"
   dependencies:
     "@types/html-minifier-terser" "^6.0.0"
     "html-minifier-terser" "^6.0.2"

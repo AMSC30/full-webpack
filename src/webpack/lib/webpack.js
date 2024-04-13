@@ -54,7 +54,7 @@ const createMultiCompiler = (childOptions, options) => {
  */
 const createCompiler = rawOptions => {
     const options = getNormalizedWebpackOptions(rawOptions)
-    
+
     // 初始化options中的context，默认为命令行执行路径
     applyWebpackOptionsBaseDefaults(options)
 
@@ -64,14 +64,14 @@ const createCompiler = rawOptions => {
         infrastructureLogging: options.infrastructureLogging
     }).apply(compiler)
 
-    // 配置的自定义插件
+    // 注册自定义插件
     if (Array.isArray(options.plugins)) {
         for (const plugin of options.plugins) {
-            // 如果是一个函数，this执行compiler
+            // 如果是一个函数，this指向compiler
             if (typeof plugin === 'function') {
                 plugin.call(compiler, compiler)
             } else {
-                // 如果是一个对象，this执行插件本身
+                // 如果是一个对象，this指向插件本身
                 plugin.apply(compiler)
             }
         }
@@ -79,7 +79,7 @@ const createCompiler = rawOptions => {
     // 初始化配置
     applyWebpackOptionsDefaults(options)
 
-    // 加工compiler 根据配置初始化默认插件
+    // 根据options注册插件
     // 很重要：在entryOption钩子上会处理每个入口并为每个入口在compiler上挂载make钩子，钩子回调将调用compilation的addEntry方法
     new WebpackOptionsApply().process(options, compiler)
 
@@ -132,12 +132,15 @@ const webpack = (options, callback) => {
         }
         return { compiler, watch, watchOptions }
     }
+
     if (callback) {
         try {
+            // 创建compiler
             const { compiler, watch, watchOptions } = create()
             if (watch) {
                 compiler.watch(watchOptions, callback)
             } else {
+                // 执行run
                 compiler.run((err, stats) => {
                     compiler.close(err2 => {
                         callback(err || err2, stats)
