@@ -151,7 +151,7 @@ class NormalModuleFactory extends ModuleFactory {
 			resolveInScheme: new HookMap(
 				() => new AsyncSeriesBailHook(["resourceData", "resolveData"])
 			),
-			
+
 			factorize: new AsyncSeriesBailHook(["resolveData"]),
 			beforeResolve: new AsyncSeriesBailHook(["resolveData"]),
 			afterResolve: new AsyncSeriesBailHook(["resolveData"]),
@@ -272,7 +272,7 @@ class NormalModuleFactory extends ModuleFactory {
 					missingDependencies,
 					contextDependencies
 				} = data;
-
+debugger
 				const loaderResolver = this.getResolver("loader");
 
 				let matchResourceData = undefined;
