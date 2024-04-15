@@ -272,7 +272,9 @@ class NormalModuleFactory extends ModuleFactory {
 					missingDependencies,
 					contextDependencies
 				} = data;
-debugger
+
+				debugger
+
 				const loaderResolver = this.getResolver("loader");
 
 				let matchResourceData = undefined;
@@ -288,6 +290,7 @@ debugger
 				if (!scheme) {
 					let requestWithoutMatchResource = request;
 					const matchResourceMatch = MATCH_RESOURCE_REGEX.exec(request);
+					
 					if (matchResourceMatch) {
 						let matchResource = matchResourceMatch[1];
 						if (matchResource.charCodeAt(0) === 46) {
@@ -550,6 +553,8 @@ debugger
 					);
 				});
 
+
+				// 解析loader
 				this.resolveRequestArray(
 					contextInfo,
 					contextScheme ? this.context : context,
