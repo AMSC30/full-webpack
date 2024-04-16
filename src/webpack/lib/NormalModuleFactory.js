@@ -273,7 +273,6 @@ class NormalModuleFactory extends ModuleFactory {
 					contextDependencies
 				} = data;
 
-				debugger
 
 				const loaderResolver = this.getResolver("loader");
 
@@ -287,6 +286,7 @@ class NormalModuleFactory extends ModuleFactory {
 				const contextScheme = getScheme(context);
 				let scheme = getScheme(request);
 
+				// 根据路径剥离loader
 				if (!scheme) {
 					let requestWithoutMatchResource = request;
 					const matchResourceMatch = MATCH_RESOURCE_REGEX.exec(request);
@@ -331,6 +331,8 @@ class NormalModuleFactory extends ModuleFactory {
 							)
 							.split(/!+/);
 						unresolvedResource = rawElements.pop();
+
+						// rawElements loader标识
 						elements = rawElements.map(el => {
 							const { path, query } = cachedParseResourceWithoutFragment(el);
 							return {
@@ -348,14 +350,18 @@ class NormalModuleFactory extends ModuleFactory {
 					elements = EMPTY_ELEMENTS;
 				}
 
+
+				// 解析上下文
 				const resolveContext = {
 					fileDependencies,
 					missingDependencies,
 					contextDependencies
 				};
 
+				// 要解析的模块路径
 				let resourceData;
 
+				// 获取loaders
 				let loaders;
 
 				const continueCallback = needCalls(2, err => {

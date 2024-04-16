@@ -72,11 +72,9 @@ const convertToResolveOptions = resolveOptionsWithDepType => {
 module.exports = class ResolverFactory {
 	constructor() {
 		this.hooks = Object.freeze({
-			/** @type {HookMap<SyncWaterfallHook<[ResolveOptionsWithDependencyType]>>} */
 			resolveOptions: new HookMap(
 				() => new SyncWaterfallHook(["resolveOptions"])
 			),
-			/** @type {HookMap<SyncHook<[Resolver, ResolveOptions, ResolveOptionsWithDependencyType]>>} */
 			resolver: new HookMap(
 				() => new SyncHook(["resolver", "resolveOptions", "userResolveOptions"])
 			)

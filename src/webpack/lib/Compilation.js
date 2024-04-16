@@ -1511,14 +1511,7 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
         this._addEntryItem(context, dependency, 'includeDependencies', options, callback)
     }
 
-    /**
-     * @param {string} context context path for entry
-     * @param {Dependency} entry entry dependency that should be followed
-     * @param {"dependencies" | "includeDependencies"} target type of entry
-     * @param {EntryOptions} options options
-     * @param {ModuleCallback} callback callback function
-     * @returns {void} returns
-     */
+   
     _addEntryItem(context, entry, target, options, callback) {
         const { name } = options
         let entryData = name !== undefined ? this.entries.get(name) : this.globalEntry
