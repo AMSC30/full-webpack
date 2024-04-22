@@ -1554,7 +1554,6 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
                     this.hooks.failedEntry.call(entry, options, err)
                     return callback(err)
                 }
-                console.log('addModuleTree的回调')
                 this.hooks.succeedEntry.call(entry, options, module)
                 return callback(null, module)
             }
