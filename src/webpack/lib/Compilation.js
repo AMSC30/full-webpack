@@ -1515,6 +1515,8 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
     _addEntryItem(context, entry, target, options, callback) {
         const { name } = options
         let entryData = name !== undefined ? this.entries.get(name) : this.globalEntry
+
+        // 保存入口模块信息
         if (entryData === undefined) {
             entryData = {
                 dependencies: [],
