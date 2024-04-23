@@ -274,6 +274,7 @@ class NormalModuleFactory extends ModuleFactory {
 				} = data;
 
 
+				// loader解析器
 				const loaderResolver = this.getResolver("loader");
 
 				let matchResourceData = undefined;
@@ -560,7 +561,7 @@ class NormalModuleFactory extends ModuleFactory {
 				});
 
 
-				// 解析loader
+				// 解析内联loader
 				this.resolveRequestArray(
 					contextInfo,
 					contextScheme ? this.context : context,

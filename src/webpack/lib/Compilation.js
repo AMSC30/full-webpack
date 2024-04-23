@@ -1457,6 +1457,9 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
      * @returns {void} will throw if dependency instance is not a valid Dependency
      */
     addModuleTree({ context, dependency, contextInfo }, callback) {
+
+
+        // 根据entry的构造获取模块解析工厂对象
         if (typeof dependency !== 'object' || dependency === null || !dependency.constructor) {
             return callback(new WebpackError("Parameter 'dependency' must be a Dependency"))
         }
