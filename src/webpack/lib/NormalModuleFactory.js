@@ -359,7 +359,7 @@ class NormalModuleFactory extends ModuleFactory {
 					contextDependencies
 				};
 
-				// 要解析的模块路径
+				// 存放解析结果
 				let resourceData;
 
 				// 获取loaders
