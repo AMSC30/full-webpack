@@ -74,9 +74,8 @@ class ModuleGraphConnection {
 		this.weak = weak;
 		this.conditional = !!condition;
 		this._active = condition !== false;
-		/** @type {function(ModuleGraphConnection, RuntimeSpec): ConnectionState} */
+
 		this.condition = condition || undefined;
-		/** @type {Set<string>} */
 		this.explanations = undefined;
 		if (explanation) {
 			this.explanations = new Set();

@@ -1236,7 +1236,6 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
                 context
             },
             (err, factoryResult) => {
-                console.log(factoryResult)
                 const applyFactoryResultDependencies = () => {
                     const { fileDependencies, contextDependencies, missingDependencies } = factoryResult
                     if (fileDependencies) {
