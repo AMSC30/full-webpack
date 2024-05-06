@@ -1487,7 +1487,6 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
                     this.processDependenciesQueue.stop()
                     this.factorizeQueue.stop()
                 } else if (!err && result) {
-                    console.log('handleModuleCreation的回调')
                     callback(null, result)
                 } else {
                     callback()

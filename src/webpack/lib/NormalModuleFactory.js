@@ -569,6 +569,7 @@ class NormalModuleFactory extends ModuleFactory {
 					loaderResolver,
 					resolveContext,
 					(err, result) => {
+						// result->[{loader:path,options:object,ident:string}]
 						if (err) return continueCallback(err);
 						loaders = result;
 						continueCallback();
@@ -670,11 +671,13 @@ class NormalModuleFactory extends ModuleFactory {
 		const request = dependency.request;
 		const assertions = dependency.assertions;
 		const contextInfo = data.contextInfo;
+
 		const fileDependencies = new LazySet();
 		const missingDependencies = new LazySet();
 		const contextDependencies = new LazySet();
 		const dependencyType =
 			(dependencies.length > 0 && dependencies[0].category) || "";
+
 		const resolveData = {
 			contextInfo,
 			resolveOptions,
