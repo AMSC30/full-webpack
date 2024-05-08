@@ -196,6 +196,7 @@ class NormalModuleFactory extends ModuleFactory {
 				stage: 100
 			},
 			(resolveData, callback) => {
+				// 解析loader、资源路径、parser、generator
 				this.hooks.resolve.callAsync(resolveData, (err, result) => {
 					if (err) return callback(err);
 
@@ -475,6 +476,7 @@ class NormalModuleFactory extends ModuleFactory {
 						if (err) {
 							return callback(err);
 						}
+						// post->normal->inline->pre
 						const allLoaders = postLoaders;
 						if (matchResourceData === undefined) {
 							for (const loader of loaders) allLoaders.push(loader);
@@ -576,6 +578,8 @@ class NormalModuleFactory extends ModuleFactory {
 					}
 				);
 
+
+				// 解析资源路径
 				const defaultResolve = context => {
 					if (/^($|\?)/.test(unresolvedResource)) {
 						resourceData = {

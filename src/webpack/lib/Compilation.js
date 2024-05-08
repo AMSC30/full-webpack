@@ -1270,6 +1270,7 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
                     moduleGraph.setProfile(newModule, currentProfile)
                 }
 
+                // 将module分别存放在moduleCache、_modules(map)、module(set)中
                 this.addModule(newModule, (err, module) => {
                     if (err) {
                         applyFactoryResultDependencies()
@@ -1281,8 +1282,8 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
                         return callback(err)
                     }
 
-                    if (this._unsafeCache && factoryResult.cacheable !== false && /** @type {any} */ (module).restoreFromUnsafeCache && this._unsafeCachePredicate(module)) {
-                        const unsafeCacheableModule = /** @type {Module & { restoreFromUnsafeCache: Function }} */ (module)
+                    if (this._unsafeCache && factoryResult.cacheable !== false &&  module.restoreFromUnsafeCache && this._unsafeCachePredicate(module)) {
+                        const unsafeCacheableModule = (module)
                         for (let i = 0; i < dependencies.length; i++) {
                             const dependency = dependencies[i]
                             moduleGraph.setResolvedModule(connectOrigin ? originModule : null, dependency, unsafeCacheableModule)
@@ -1295,6 +1296,7 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
                         applyFactoryResultDependencies()
                         for (let i = 0; i < dependencies.length; i++) {
                             const dependency = dependencies[i]
+                            // 将module添加到moduleGraph的_moduleMap、_dependenceMap
                             moduleGraph.setResolvedModule(connectOrigin ? originModule : null, dependency, module)
                         }
                     }
@@ -1311,6 +1313,7 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
                         }
                     }
 
+                    // 处理模块的依赖
                     this._handleModuleBuildAndDependencies(originModule, module, recursive, callback)
                 })
             }
