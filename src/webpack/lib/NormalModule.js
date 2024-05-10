@@ -1084,6 +1084,7 @@ class NormalModule extends Module {
 			let result;
 			try {
 				const source = this._source.source();
+				// 使用acorn解析依赖
 				result = this.parser.parse(this._ast || source, {
 					source,
 					current: this,
