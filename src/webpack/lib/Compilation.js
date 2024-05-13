@@ -1282,6 +1282,8 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
                         return callback(err)
                     }
 
+
+                    // 将module的父子关系添加到moduleGraph中
                     if (this._unsafeCache && factoryResult.cacheable !== false &&  module.restoreFromUnsafeCache && this._unsafeCachePredicate(module)) {
                         const unsafeCacheableModule = (module)
                         for (let i = 0; i < dependencies.length; i++) {
