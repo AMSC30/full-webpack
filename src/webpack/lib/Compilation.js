@@ -1322,7 +1322,6 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
         )
     }
 
-    // TODO
     _handleModuleBuildAndDependencies(originModule, module, recursive, callback) {
         // Check for cycles when build is trigger inside another build
         let creatingModuleDuringBuildSet = undefined

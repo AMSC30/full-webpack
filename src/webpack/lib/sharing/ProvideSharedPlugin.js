@@ -83,11 +83,8 @@ class ProvideSharedPlugin {
 		compiler.hooks.compilation.tap(
 			"ProvideSharedPlugin",
 			(compilation, { normalModuleFactory }) => {
-				/** @type {ResolvedProvideMap} */
 				const resolvedProvideMap = new Map();
-				/** @type {Map<string, ProvideOptions>} */
 				const matchProvides = new Map();
-				/** @type {Map<string, ProvideOptions>} */
 				const prefixMatchProvides = new Map();
 				for (const [request, config] of this._provides) {
 					if (/^(\/|[A-Za-z]:\\|\\\\|\.\.?(\/|$))/.test(request)) {
