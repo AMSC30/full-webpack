@@ -2106,6 +2106,8 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
 
         this.hooks.seal.call()
 
+
+        // optimize
         this.logger.time('optimize dependencies')
         while (this.hooks.optimizeDependencies.call(this.modules)) {
             /* empty */
@@ -2116,26 +2118,46 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
         this.logger.time('create chunks')
         this.hooks.beforeChunks.call()
         this.moduleGraph.freeze('seal')
+
+
+
+        // 遍历入口
         /** @type {Map<Entrypoint, Module[]>} */
         const chunkGraphInit = new Map()
         for (const [name, { dependencies, includeDependencies, options }] of this.entries) {
+            // 根据入口创建一个chunk
             const chunk = this.addChunk(name)
+
+            // 自定义输出文件名
             if (options.filename) {
                 chunk.filenameTemplate = options.filename
             }
+
+
+            // 创建entryPoint
             const entrypoint = new Entrypoint(options)
             if (!options.dependOn && !options.runtime) {
                 entrypoint.setRuntimeChunk(chunk)
             }
+
+            // 设置entryPoint的entryChunk
             entrypoint.setEntrypointChunk(chunk)
-            this.namedChunkGroups.set(name, entrypoint)
-            this.entrypoints.set(name, entrypoint)
-            this.chunkGroups.push(entrypoint)
+            // 添加到entryPoint的chunks中
             connectChunkGroupAndChunk(entrypoint, chunk)
+
+
+            // 添加到group中
+            this.namedChunkGroups.set(name, entrypoint)
+
+            // 添加到entryPoints中
+            this.entrypoints.set(name, entrypoint)
+
+            // 添加到chunkGourps中
+            this.chunkGroups.push(entrypoint)
 
             const entryModules = new Set()
             for (const dep of [...this.globalEntry.dependencies, ...dependencies]) {
-                entrypoint.addOrigin(null, { name }, /** @type {any} */ (dep).request)
+                entrypoint.addOrigin(null, { name }, dep.request)
 
                 const module = this.moduleGraph.getModule(dep)
                 if (module) {
