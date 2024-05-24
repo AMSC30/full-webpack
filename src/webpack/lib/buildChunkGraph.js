@@ -285,15 +285,13 @@ const visitModules = (
 	/** @type {Set<ChunkGroupInfo>} */
 	const chunkGroupsForCombining = new Set();
 
-	// Fill queue with entrypoint modules
-	// Create ChunkGroupInfo for entrypoints
+	// 为每个入口chunkGroup创建chunkGroupInfo，将所有入口module添加到queue中
 	for (const [chunkGroup, modules] of inputEntrypointsAndModules) {
 		const runtime = getEntryRuntime(
 			compilation,
 			chunkGroup.name,
 			chunkGroup.options
 		);
-		/** @type {ChunkGroupInfo} */
 		const chunkGroupInfo = {
 			chunkGroup,
 			runtime,
@@ -347,7 +345,7 @@ const visitModules = (
 			namedChunkGroups.set(chunkGroup.name, chunkGroupInfo);
 		}
 	}
-	// Fill availableSources with parent-child dependencies between entrypoints
+
 	for (const chunkGroupInfo of chunkGroupsForCombining) {
 		const { chunkGroup } = chunkGroupInfo;
 		chunkGroupInfo.availableSources = new Set();
@@ -697,22 +695,20 @@ const visitModules = (
 			chunkGroupInfo = queueItem.chunkGroupInfo;
 
 			switch (queueItem.action) {
+				// 关联module、chunk、chunkGroup
 				case ADD_AND_ENTER_ENTRY_MODULE:
 					chunkGraph.connectChunkAndEntryModule(
 						chunk,
 						module,
-						/** @type {Entrypoint} */ (chunkGroup)
+						chunkGroup
 					);
-				// fallthrough
+				// 关联module和chunk
 				case ADD_AND_ENTER_MODULE: {
 					if (chunkGraph.isModuleInChunk(module, chunk)) {
-						// already connected, skip it
 						break;
 					}
-					// We connect Module and Chunk
 					chunkGraph.connectChunkAndModule(chunk, module);
 				}
-				// fallthrough
 				case ENTER_MODULE: {
 					const index = chunkGroup.getModulePreOrderIndex(module);
 					if (index === undefined) {
@@ -731,11 +727,9 @@ const visitModules = (
 						nextFreeModulePreOrderIndex++;
 					}
 
-					// reuse queueItem
 					queueItem.action = LEAVE_MODULE;
 					queue.push(queueItem);
 				}
-				// fallthrough
 				case PROCESS_BLOCK: {
 					processBlock(block);
 					break;

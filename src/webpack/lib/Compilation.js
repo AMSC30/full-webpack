@@ -2155,6 +2155,7 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
             // 添加到chunkGourps中
             this.chunkGroups.push(entrypoint)
 
+            // 遍历每一个入口module，将module和chunk关联起来，并保存到入口group的moduleList中
             const entryModules = new Set()
             for (const dep of [...this.globalEntry.dependencies, ...dependencies]) {
                 entrypoint.addOrigin(null, { name }, dep.request)
